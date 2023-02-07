@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:home_management_week6/controller/menu_controller.dart';
+import 'package:home_management_week6/controller/navigation_controller.dart';
+import 'package:home_management_week6/layout.dart';
 import 'package:home_management_week6/view/screens/homeScreen/home_screen.dart';
 
 void main() {
+  Get.put(MenuController());
+  Get.put(NavigationController());
   runApp(const MyApp());
 }
 
@@ -12,7 +19,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -26,7 +33,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const HomeScreen(),
+      home: const Layout(),
     );
   }
 }
