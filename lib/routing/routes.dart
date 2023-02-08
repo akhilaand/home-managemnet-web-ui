@@ -23,23 +23,19 @@ List menuItems = [
 Route<dynamic> generateRoute(RouteSettings settings) {
   switch (settings.name) {
     case livingRoomRoute:
-      return _getPageRoute(const HomeScreen());
+      return _getPageRoute(HomeScreen());
     case familyRoomRoute:
-      return _getPageRoute(const HomeScreen());
+      return _getPageRoute(HomeScreen());
     case studioRoute:
-      return _getPageRoute(const HomeScreen());
+      return _getPageRoute(HomeScreen());
     case kitchenRoute:
-      return _getPageRoute(const HomeScreen());
+      return _getPageRoute(HomeScreen());
     case bedroomRoute:
-      return _getPageRoute(const HomeScreen());
+      return _getPageRoute(HomeScreen());
     case garageRoute:
-      return _getPageRoute(const HomeScreen());
+      return _getPageRoute(HomeScreen());
     default:
-      return _getPageRoute(const HomeScreen());
-
-
-
-
+      return _getPageRoute(HomeScreen());
   }
 }
 

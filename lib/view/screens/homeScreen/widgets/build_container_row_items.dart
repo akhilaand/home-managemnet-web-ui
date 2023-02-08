@@ -18,17 +18,7 @@ class BuildContainerRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              spreadRadius: 1,
-              blurRadius: 7,
-              offset: const Offset(0, 3), // changes position of shadow
-            ),
-          ],
-          color: white,
-          borderRadius: BorderRadius.all(Radius.circular(8))),
+      decoration: CommonComponents.decoratedContainerWhite,
       alignment: FractionalOffset.center,
       child: Padding(
         padding: const EdgeInsets.symmetric(
