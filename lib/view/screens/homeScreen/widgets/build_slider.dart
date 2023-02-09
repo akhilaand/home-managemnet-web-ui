@@ -33,7 +33,7 @@ class BuildSlider extends StatelessWidget {
 
             child: Align(
               alignment: Alignment.center,
-              heightFactor: 0.6,
+              heightFactor: 0.8,
               child: SfRadialGauge(
                   axes: <RadialAxis>[
                     RadialAxis(
@@ -46,7 +46,7 @@ class BuildSlider extends StatelessWidget {
                         ticksPosition: ElementsPosition.outside,
                         showLabels: false,
                         showTicks: false,
-                        radiusFactor: 0.6,
+                        radiusFactor: 0.8,
                         axisLineStyle: const AxisLineStyle(
 
                             cornerStyle: CornerStyle.bothCurve,
@@ -99,7 +99,7 @@ class BuildSlider extends StatelessWidget {
                                   shape: BoxShape.circle,
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(appPadding + 10),
+                                  padding: const EdgeInsets.all(appPadding + 40),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [

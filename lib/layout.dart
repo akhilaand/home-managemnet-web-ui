@@ -81,7 +81,7 @@ class Layout extends StatelessWidget {
                   topLeft: Radius.circular(25),
                   bottomLeft: Radius.circular(25))),
           height: size.height,
-          width: 250,
+          width: size.width/4,
         ),
       ],
     );

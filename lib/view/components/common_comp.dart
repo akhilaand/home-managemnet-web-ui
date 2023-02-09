@@ -32,4 +32,15 @@ class CommonComponents{
       color: white,
       borderRadius: const BorderRadius.all(Radius.circular(8)));
 
+  static Container buildCircularRectangleContainer({required IconData icon,VoidCallback? onPressed}){
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.grey.shade100,
+          borderRadius:
+          const BorderRadius.all(Radius.circular(10))),
+      child: IconButton(
+          onPressed: onPressed, icon:  Icon(icon)),
+    );
+  }
+
 }
