@@ -8,39 +8,59 @@ import 'package:fluttertoast/fluttertoast.dart';
 // Project imports:
 import '../../utils/colors.dart';
 
-class CommonComponents{
-  static showToast(){
+class CommonComponents {
+  static showToast() {
     return Fluttertoast.showToast(
         msg: "Search Icon Tapped",
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.CENTER,
         timeInSecForIosWeb: 1,
         textColor: white,
-        fontSize: 16.0
-    );
+        fontSize: 16.0);
   }
 
-  static Decoration decoratedContainerWhite= BoxDecoration(
-      boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 1,
-          blurRadius: 7,
-          offset: const Offset(0, 3), // changes position of shadow
-        ),
-      ],
-      color: white,
-      borderRadius: const BorderRadius.all(Radius.circular(8)));
+  static Decoration decoratedContainerWhite = BoxDecoration(boxShadow: [
+    BoxShadow(
+      color: Colors.grey.withOpacity(0.5),
+      spreadRadius: 1,
+      blurRadius: 7,
+      offset: const Offset(0, 3), // changes position of shadow
+    ),
+  ], color: white, borderRadius: const BorderRadius.all(Radius.circular(8)));
 
-  static Container buildCircularRectangleContainer({required IconData icon,VoidCallback? onPressed}){
+  static Container buildCircularRectangleContainer(
+      {required IconData icon, VoidCallback? onPressed}) {
     return Container(
       decoration: BoxDecoration(
           color: Colors.grey.shade100,
-          borderRadius:
-          const BorderRadius.all(Radius.circular(10))),
-      child: IconButton(
-          onPressed: onPressed, icon:  Icon(icon)),
+          borderRadius: const BorderRadius.all(Radius.circular(10))),
+      child: IconButton(onPressed: onPressed, icon: Icon(icon)),
     );
   }
 
+  static Container buildCircledIconContainer(
+      {required IconData icon,
+      required Color bgColor,
+      required Color iconColor}) {
+    return Container(
+      decoration: BoxDecoration(
+          color: bgColor,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 1,
+              blurRadius: 1,
+              offset: const Offset(0, 0), // changes position of shadow
+            ),
+          ],
+          shape: BoxShape.circle),
+      child: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Icon(
+          icon,
+          color: iconColor,
+        ),
+      ),
+    );
+  }
 }
