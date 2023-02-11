@@ -2,8 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:home_management_week6/controller/ui_controllers.dart';
 import 'package:home_management_week6/utils/constants.dart';
+import 'package:chips_choice/chips_choice.dart';
 
 // Package imports:
 
@@ -15,13 +19,17 @@ import '../../../components/common_comp.dart';
 import 'build_slider.dart';
 
 class BuildDeviceDetailRowContainer extends StatelessWidget {
-  const BuildDeviceDetailRowContainer({
+   BuildDeviceDetailRowContainer({
     Key? key,
     required SliderController sliderController,
   })  : _sliderController = sliderController,
         super(key: key);
 
   final SliderController _sliderController;
+  final UiClassControllers _uiClassControllers=Get.put(UiClassControllers());
+   List<String> options = [
+     'News', 'Entertainment', 'Politics',
+   ];
 
   @override
   Widget build(BuildContext context) {
@@ -44,26 +52,58 @@ class BuildDeviceDetailRowContainer extends StatelessWidget {
 
   Padding buildDeviceOperationsWidget() {
     return Padding(
-      padding: const EdgeInsets.all(appPadding),
-      child: Container(
-        decoration: BoxDecoration(boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 1,
-            blurRadius: 7,
-            offset: const Offset(0, 3), // changes position of shadow
+        padding: const EdgeInsets.all(appPadding),
+        child: Container(
+          decoration: BoxDecoration(boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 1,
+              blurRadius: 7,
+              offset: const Offset(0, 3), // changes position of shadow
+            ),
+          ], color: white, borderRadius: BorderRadius.all(Radius.circular(15))),
+          height: 380,
+          width: 50,
+          child: Column(
+            children: [
+              buildPowerUsageContainer(),
+              MultiSelectChip(options)
+              // ChipsChoice<int>.single(
+              //   choiceStyle:  C2ChipStyle.filled(
+              //     color: Colors.white,
+              //     borderWidth: 10,
+              //     borderRadius: BorderRadius.all(Radius.circular(18)),
+              //     selectedStyle: const C2ChipStyle(
+              //       backgroundColor: primaryColor,
+              //       borderColor: Colors.red,
+              //       borderWidth: 15,
+              //       borderStyle: BorderStyle.solid
+              //     ),
+              //
+              //     // backgroundColor: primaryColor,
+              //     // borderRadius: BorderRadius.all(Radius.circular(18)),
+              //     // overlayColor: Colors.transparent,
+              //
+              //
+              //
+              //   ),
+              //
+              //   value: _uiClassControllers.tag.value,
+              //   onChanged: (val) => _uiClassControllers.changeTagValue(newValue: val),
+              //   choiceItems: C2Choice.listFrom<int, String>(
+              //
+              //     source: options,
+              //
+              //     value: (i, v) => i,
+              //     label: (i, v) => v,
+              //   ),
+              // )
+            ],
           ),
-        ], color: white, borderRadius: BorderRadius.all(Radius.circular(15))),
-        height: 380,
-        width: 50,
-        child: Column(
-          children: [
-            buildPowerUsageContainer(),
-          ],
-        ),
-      ),
-    );
+        ) );
   }
+
+  
 
   Container buildPowerUsageContainer() {
     return Container(
@@ -210,3 +250,43 @@ class BuildDeviceDetailRowContainer extends StatelessWidget {
 }
 
 
+class MultiSelectChip extends StatefulWidget {
+  final List<String> reportList;
+  const MultiSelectChip(this.reportList, {super.key});
+  @override
+  _MultiSelectChipState createState() => _MultiSelectChipState();
+}
+class _MultiSelectChipState extends State<MultiSelectChip> {
+  String selectedChoice = "News";
+  // this function will build and return the choice list
+  _buildChoiceList() {
+    List<Widget> choices = [];
+
+    for (var item in widget.reportList) {
+      bool isSelectedItem=selectedChoice==item;
+      choices.add(Container(
+        padding: const EdgeInsets.all(2.0),
+        child: ChoiceChip(
+          selectedColor: primaryColor,
+          backgroundColor: Colors.white,
+          side:  BorderSide(color: Colors.grey.shade200),
+          label: Text(item,style:TextStyle(color: isSelectedItem?white:black),),
+          selected: selectedChoice == item,
+          onSelected: (selected) {
+            setState(() {
+              selectedChoice = item;
+            });
+          },
+        ),
+      ));
+    }
+    return choices;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      children: _buildChoiceList(),
+    );
+  }
+}
