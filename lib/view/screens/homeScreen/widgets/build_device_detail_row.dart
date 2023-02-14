@@ -1,35 +1,37 @@
 // Flutter imports:
 
+// Flutter imports:
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:home_management_week6/controller/ui_controllers.dart';
-import 'package:home_management_week6/utils/constants.dart';
-import 'package:chips_choice/chips_choice.dart';
 
 // Package imports:
+import 'package:google_fonts/google_fonts.dart';
 
 // Project imports:
+import 'package:home_management_week6/utils/constants.dart';
 import '../../../../controller/slider_controller.dart';
 import '../../../../utils/colors.dart';
 import '../../../../utils/style.dart';
 import '../../../components/common_comp.dart';
+import 'build_multichip.dart';
 import 'build_slider.dart';
 
+// Package imports:
+
+
 class BuildDeviceDetailRowContainer extends StatelessWidget {
-   BuildDeviceDetailRowContainer({
+  BuildDeviceDetailRowContainer({
     Key? key,
     required SliderController sliderController,
   })  : _sliderController = sliderController,
         super(key: key);
 
   final SliderController _sliderController;
-  final UiClassControllers _uiClassControllers=Get.put(UiClassControllers());
-   List<String> options = [
-     'News', 'Entertainment', 'Politics',
-   ];
+  List<String> deviceList = [
+    'Main Lamp',
+    'Table Lamp',
+  ];
+  List<String> sceneList = ['None', 'Working', 'Reading'];
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +42,6 @@ class BuildDeviceDetailRowContainer extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Expanded(child: buildLIghtControlWIdget(size)),
-
-
             Expanded(
               flex: 1,
               child: buildDeviceOperationsWidget(),
@@ -62,48 +62,143 @@ class BuildDeviceDetailRowContainer extends StatelessWidget {
               offset: const Offset(0, 3), // changes position of shadow
             ),
           ], color: white, borderRadius: BorderRadius.all(Radius.circular(15))),
-          height: 380,
           width: 50,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildPowerUsageContainer(),
-              MultiSelectChip(options)
-              // ChipsChoice<int>.single(
-              //   choiceStyle:  C2ChipStyle.filled(
-              //     color: Colors.white,
-              //     borderWidth: 10,
-              //     borderRadius: BorderRadius.all(Radius.circular(18)),
-              //     selectedStyle: const C2ChipStyle(
-              //       backgroundColor: primaryColor,
-              //       borderColor: Colors.red,
-              //       borderWidth: 15,
-              //       borderStyle: BorderStyle.solid
-              //     ),
-              //
-              //     // backgroundColor: primaryColor,
-              //     // borderRadius: BorderRadius.all(Radius.circular(18)),
-              //     // overlayColor: Colors.transparent,
-              //
-              //
-              //
-              //   ),
-              //
-              //   value: _uiClassControllers.tag.value,
-              //   onChanged: (val) => _uiClassControllers.changeTagValue(newValue: val),
-              //   choiceItems: C2Choice.listFrom<int, String>(
-              //
-              //     source: options,
-              //
-              //     value: (i, v) => i,
-              //     label: (i, v) => v,
-              //   ),
-              // )
+              // MultiSelectChip(options)
+              const SizedBox(
+                height: 5,
+              ),
+              buildControlSelectionWidget(
+                  title: "Device", itemList: deviceList, isFirstWidget: true),
+              buildControlSelectionWidget(
+                  title: "Scene", itemList: sceneList, isFirstWidget: false),
+              buildScheduleWIdget()
             ],
           ),
-        ) );
+        ));
   }
 
-  
+  Padding buildScheduleWIdget() {
+    return Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: appPadding / 2, vertical: appPadding / 3),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Schedule",
+                          style: toolBarEnabledItemStyle.copyWith(fontSize: 16)),
+                      Text("Set always on",
+                          style: GoogleFonts.roboto(fontWeight: FontWeight.w600,fontSize: 13)),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        decoration: const BoxDecoration(
+                            color: Color(0xffe1f2f5),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              Container(
+                                decoration: const BoxDecoration(
+                                    color: primaryColor,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(15))),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "6:00 pm",
+                                    style: GoogleFonts.roboto(color: white),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "to",
+                                style: GoogleFonts.roboto(),
+                              ),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                decoration: const BoxDecoration(
+                                    color: primaryColor,
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(15))),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Text(
+                                    "10:00 pm",
+                                    style: GoogleFonts.roboto(color: white),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      CommonComponents.buildCircledIconContainer(
+                          icon: Icons.edit_calendar_rounded,
+                          bgColor: const Color(0xfffc8c08),
+                          iconColor: white)
+                    ],
+                  )
+                ],
+              ),
+            );
+  }
+
+  Padding buildControlSelectionWidget(
+      {required String title,
+      required List<String> itemList,
+      required isFirstWidget}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+          horizontal: appPadding / 2,
+          vertical: isFirstWidget ? appPadding / 3 : 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(title,
+                  style: toolBarEnabledItemStyle.copyWith(fontSize: 16)),
+              CommonComponents.buildCircledIconContainer(
+                  icon: Icons.add,
+                  bgColor: const Color(0xfffc8c08),
+                  iconColor: white)
+            ],
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          MultiSelectChip(itemList),
+          const SizedBox(
+            height: 5,
+          ),
+          Divider(
+            color: Colors.grey.shade200,
+          )
+        ],
+      ),
+    );
+  }
 
   Container buildPowerUsageContainer() {
     return Container(
@@ -245,48 +340,6 @@ class BuildDeviceDetailRowContainer extends StatelessWidget {
             translation: const Offset(-0.1, 0),
             child: BuildSlider(sliderController: _sliderController)),
       ],
-    );
-  }
-}
-
-
-class MultiSelectChip extends StatefulWidget {
-  final List<String> reportList;
-  const MultiSelectChip(this.reportList, {super.key});
-  @override
-  _MultiSelectChipState createState() => _MultiSelectChipState();
-}
-class _MultiSelectChipState extends State<MultiSelectChip> {
-  String selectedChoice = "News";
-  // this function will build and return the choice list
-  _buildChoiceList() {
-    List<Widget> choices = [];
-
-    for (var item in widget.reportList) {
-      bool isSelectedItem=selectedChoice==item;
-      choices.add(Container(
-        padding: const EdgeInsets.all(2.0),
-        child: ChoiceChip(
-          selectedColor: primaryColor,
-          backgroundColor: Colors.white,
-          side:  BorderSide(color: Colors.grey.shade200),
-          label: Text(item,style:TextStyle(color: isSelectedItem?white:black),),
-          selected: selectedChoice == item,
-          onSelected: (selected) {
-            setState(() {
-              selectedChoice = item;
-            });
-          },
-        ),
-      ));
-    }
-    return choices;
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Wrap(
-      children: _buildChoiceList(),
     );
   }
 }
