@@ -8,10 +8,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'colors.dart';
 
 TextStyle toolBarEnabledItemStyle =
-    GoogleFonts.roboto(fontWeight: FontWeight.w700, color: black);
+    GoogleFonts.roboto(fontWeight: FontWeight.w700, color: black,fontSize: 18);
 
 TextStyle toolBarDisabledItemStyle =
-    GoogleFonts.roboto(color: grey400, fontWeight: FontWeight.w400);
+    GoogleFonts.roboto(color: grey400, fontWeight: FontWeight.w400,fontSize: 16);
 
 TextStyle greyMediumSizedTextHeading = GoogleFonts.roboto(
     color: grey400, fontSize: 14, fontWeight: FontWeight.w700);

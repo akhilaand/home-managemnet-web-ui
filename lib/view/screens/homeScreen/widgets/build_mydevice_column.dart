@@ -71,7 +71,7 @@ class BuildMyDeviceColumn extends StatelessWidget {
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.withOpacity(0.4),
+                    color: grey.withOpacity(0.4),
                     blurRadius: 10,
                   ),
                 ],
@@ -85,7 +85,7 @@ class BuildMyDeviceColumn extends StatelessWidget {
                 children: [
                   Container(
                     decoration:  BoxDecoration(
-                        color: isHovered?primaryColor:Colors.grey.shade200,
+                        color: isHovered?primaryColor:grey200,
                         borderRadius: const BorderRadius.all(Radius.circular(10))),
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -96,12 +96,12 @@ class BuildMyDeviceColumn extends StatelessWidget {
                     height: 8,
                   ),
                   Text(item.deviceName,
-                      style: toolBarEnabledItemStyle.copyWith(fontSize: 15,color: isHovered?Colors.white:black)),
+                      style: toolBarEnabledItemStyle.copyWith(fontSize: 15,color: isHovered?white:black)),
                   const SizedBox(
                     height: 7,
                   ),
                   Text(item.deviceSubTitle,
-                      style: GoogleFonts.roboto(color: isHovered?Colors.white:Colors.grey,fontSize: 12)),
+                      style: GoogleFonts.roboto(color: isHovered?white:grey,fontSize: 12)),
                 ],
               ),
             ),

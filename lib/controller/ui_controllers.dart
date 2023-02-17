@@ -10,7 +10,7 @@ import 'package:home_management_week6/modals/my_device_modal.dart';
 
 class UiClassControllers extends GetxController {
   var selectedChoice = 0.obs;
-  var hoverItem = "".obs;
+  var hoverItem = "Indoor Cam".obs;
 
   List<MyDeviceModal> deviceList = [
     MyDeviceModal(

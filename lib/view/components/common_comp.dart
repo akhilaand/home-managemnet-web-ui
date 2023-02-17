@@ -21,7 +21,7 @@ class CommonComponents {
 
   static Decoration decoratedContainerWhite = BoxDecoration(boxShadow: [
     BoxShadow(
-      color: Colors.grey.withOpacity(0.5),
+      color: grey.withOpacity(0.5),
       spreadRadius: 1,
       blurRadius: 7,
       offset: const Offset(0, 3), // changes position of shadow
@@ -31,23 +31,26 @@ class CommonComponents {
   static Container buildCircularRectangleContainer(
       {required IconData icon, VoidCallback? onPressed}) {
     return Container(
-      decoration: BoxDecoration(
-          color: Colors.grey.shade100,
-          borderRadius: const BorderRadius.all(Radius.circular(10))),
+      decoration: const BoxDecoration(
+          color: grey100,
+          borderRadius: BorderRadius.all(Radius.circular(10))),
       child: IconButton(onPressed: onPressed, icon: Icon(icon)),
     );
   }
 
   static Container buildCircledIconContainer(
+
       {required IconData icon,
       required Color bgColor,
-      required Color iconColor}) {
+      required Color iconColor,double? circleRadius,bool shadowRequired=true}) {
     return Container(
+      height: circleRadius,
+      width: circleRadius,
       decoration: BoxDecoration(
           color: bgColor,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: shadowRequired?grey.withOpacity(0.5):Colors.transparent,
               spreadRadius: 1,
               blurRadius: 1,
               offset: const Offset(0, 0), // changes position of shadow

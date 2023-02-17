@@ -58,15 +58,15 @@ class BuildContainerRow extends StatelessWidget {
 
             buildContainerRowItems(
               icon: SvgPicture.asset("assets/svg/humidity.svg",
-                  color: Colors.green.shade300, height: 32),
+                  color: green300, height: 32),
               value: "57%",
               text: "Humidity",
             ),
 
             buildContainerRowItems(
-              icon: Icon(
+              icon: const Icon(
                 Icons.network_wifi_3_bar,
-                color: Colors.grey.shade700,
+                color: grey700,
                 size: 25,
               ),
               value: "8",
@@ -74,10 +74,10 @@ class BuildContainerRow extends StatelessWidget {
             ),
 
             Container(
-              decoration: BoxDecoration(
-                  color: Colors.grey.shade100,
+              decoration: const BoxDecoration(
+                  color: grey100,
                   borderRadius:
-                  const BorderRadius.all(Radius.circular(10))),
+                  BorderRadius.all(Radius.circular(10))),
               child: IconButton(
                   onPressed: () {
                     CommonComponents.showToast();

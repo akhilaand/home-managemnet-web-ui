@@ -23,8 +23,8 @@ class _MultiSelectChipState extends State<MultiSelectChip> {
         padding: const EdgeInsets.all(2.0),
         child: ChoiceChip(
           selectedColor: primaryColor,
-          backgroundColor: Colors.white,
-          side: BorderSide(color: Colors.grey.shade200),
+          backgroundColor: white,
+          side: const BorderSide(color: grey200),
           label: Text(
             item,
             style: TextStyle(

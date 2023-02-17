@@ -18,7 +18,6 @@ import 'build_slider.dart';
 
 // Package imports:
 
-
 class BuildDeviceDetailRowContainer extends StatelessWidget {
   BuildDeviceDetailRowContainer({
     Key? key,
@@ -56,7 +55,7 @@ class BuildDeviceDetailRowContainer extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
+              color: grey.withOpacity(0.5),
               spreadRadius: 1,
               blurRadius: 7,
               offset: const Offset(0, 3), // changes position of shadow
@@ -83,84 +82,84 @@ class BuildDeviceDetailRowContainer extends StatelessWidget {
 
   Padding buildScheduleWIdget() {
     return Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: appPadding / 2, vertical: appPadding / 3),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text("Schedule",
-                          style: toolBarEnabledItemStyle.copyWith(fontSize: 16)),
-                      Text("Set always on",
-                          style: GoogleFonts.roboto(fontWeight: FontWeight.w600,fontSize: 13)),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      padding: const EdgeInsets.symmetric(
+          horizontal: appPadding / 2, vertical: appPadding / 3),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text("Schedule",
+                  style: toolBarEnabledItemStyle.copyWith(fontSize: 16)),
+              Text("Set always on",
+                  style: GoogleFonts.roboto(
+                      fontWeight: FontWeight.w600, fontSize: 13)),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                decoration: const BoxDecoration(
+                    color: Color(0xffe1f2f5),
+                    borderRadius: BorderRadius.all(Radius.circular(20))),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
                     children: [
                       Container(
                         decoration: const BoxDecoration(
-                            color: Color(0xffe1f2f5),
+                            color: primaryColor,
                             borderRadius:
-                                BorderRadius.all(Radius.circular(20))),
+                                BorderRadius.all(Radius.circular(15))),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              Container(
-                                decoration: const BoxDecoration(
-                                    color: primaryColor,
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(15))),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    "6:00 pm",
-                                    style: GoogleFonts.roboto(color: white),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "to",
-                                style: GoogleFonts.roboto(),
-                              ),
-                              SizedBox(
-                                width: 5,
-                              ),
-                              Container(
-                                decoration: const BoxDecoration(
-                                    color: primaryColor,
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(15))),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Text(
-                                    "10:00 pm",
-                                    style: GoogleFonts.roboto(color: white),
-                                  ),
-                                ),
-                              ),
-                            ],
+                          child: Text(
+                            "6:00 pm",
+                            style: GoogleFonts.roboto(color: white),
                           ),
                         ),
                       ),
-                      CommonComponents.buildCircledIconContainer(
-                          icon: Icons.edit_calendar_rounded,
-                          bgColor: const Color(0xfffc8c08),
-                          iconColor: white)
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        "to",
+                        style: GoogleFonts.roboto(),
+                      ),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      Container(
+                        decoration: const BoxDecoration(
+                            color: primaryColor,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15))),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            "10:00 pm",
+                            style: GoogleFonts.roboto(color: white),
+                          ),
+                        ),
+                      ),
                     ],
-                  )
-                ],
+                  ),
+                ),
               ),
-            );
+              CommonComponents.buildCircledIconContainer(
+                  icon: Icons.edit_calendar_rounded,
+                  bgColor: const Color(0xfffc8c08),
+                  iconColor: white)
+            ],
+          )
+        ],
+      ),
+    );
   }
 
   Padding buildControlSelectionWidget(
@@ -192,8 +191,8 @@ class BuildDeviceDetailRowContainer extends StatelessWidget {
           const SizedBox(
             height: 5,
           ),
-          Divider(
-            color: Colors.grey.shade200,
+          const Divider(
+            color: grey200,
           )
         ],
       ),
@@ -241,7 +240,7 @@ class BuildDeviceDetailRowContainer extends StatelessWidget {
                           color: const Color(0xff5e9efe),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
+                              color: grey.withOpacity(0.5),
                               spreadRadius: 1,
                               blurRadius: 1,
                               offset: const Offset(
@@ -326,7 +325,7 @@ class BuildDeviceDetailRowContainer extends StatelessWidget {
                     CommonComponents.buildCircledIconContainer(
                         icon: Icons.more_horiz,
                         bgColor: white,
-                        iconColor: Colors.grey.shade700)
+                        iconColor: grey700)
                   ],
                 )
               ],
