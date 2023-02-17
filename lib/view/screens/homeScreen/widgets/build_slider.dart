@@ -29,7 +29,7 @@ class BuildSlider extends StatelessWidget {
               print(_sliderController.value.value);
               return Container(
                 decoration:  BoxDecoration(
-                    color: .grey.shade100.withOpacity(0.5),
+                    color: grey100.withOpacity(0.5),
                     shape: BoxShape.circle),
                 child: ClipRRect(
 
